@@ -21,5 +21,8 @@
     <ClCompile Include="2164_카드2.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="11866_BOJ.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
