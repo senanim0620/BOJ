@@ -4,38 +4,29 @@
 #include <stack>
 #include <queue>
 
+
 using namespace std;
 
 vector<int> graph[1001];
 int N, M, V;
 
-void DFS()
+void dfs(int vertex) // 받아온 것은 방문한 곳
 {
-	bool is[1001] = { false };
+	static bool isVisited[1001] = { false };
+	isVisited[vertex] = true;
 
-	stack<int> st;// 앞으로 방문할 정점을 저장
-	st.push(V);
-	is[V] = true;
-	//더 이상 방문할 정점이 없을 때까지 방문
-	while (false == st.empty())//스택이 비었을 때 모든 정점을 방문했다는 뜻
+	cout << vertex << ' ';
+	
+	for (int next : graph[vertex])
 	{
-		int node = st.top();
-		st.pop();
-
-		cout << node << ' ';
-
-		for (int next : graph[node])
-		{
-			if (is[next] == false)
-			{
-				st.push(next);
-				is[next] = true;
-				break;
-			}
-		}
+		if (isVisited[next] == false)
+			dfs(next);
 	}
-
 }
+
+queue<int> Q;
+
+
 void BFS()
 {
 	bool is[1001] = { false };
@@ -76,6 +67,7 @@ int main()
 
 		graph[s].push_back(e);
 		graph[e].push_back(s);
+		//Q.push()
 	}
 
 	for (int i = 0; i <= N; i++)
@@ -83,9 +75,7 @@ int main()
 		sort(graph[i].begin(), graph[i].end());
 	}
 
-
-
-	DFS();
+	dfs(V);
 	cout << "\n";
 	BFS();
 }
