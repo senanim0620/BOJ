@@ -13,8 +13,9 @@ int main()
 		int coin = coinType[i];
 		cnt += n / coin; // n/coin을 하면 몫이니까 갯수.... 가 나오잖어?
 		n %= coin; // 이거 어케 한줄로 함? ㅋㅋㅋ... 개똑똑하네 진짜. 
-	
+
 	}
 	cout << cnt;
 	return 0;
 }
+
