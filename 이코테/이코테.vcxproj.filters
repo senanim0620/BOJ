@@ -15,7 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="이코테.cpp">
+    <ClCompile Include="큰수의법칙_1.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="큰수의법칙_2.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
