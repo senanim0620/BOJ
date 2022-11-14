@@ -1,48 +1,62 @@
 #include <bits/stdc++.h>
 
 using namespace std;
+int graph[1000][1000] ; // 문제에서 1000이하라고 명시 
+int m, n;
 
-int n, m;
-int graph[1000][1000];
+bool dfs(int y, int x)
+{
+	// 범위 밖 종료
+	if (y <= -1 || x <= -1 || y > 3 || x > 999)
+		return false;
 
-// DFS로 특정 노드를 방문하고 연결된 모든 노드들도 방문
-bool dfs(int x, int y) {
-    // 주어진 범위를 벗어나는 경우에는 즉시 종료
-    if (x <= -1 || x >= n || y <= -1 || y >= m) {
-        return false;
-    }
-    // 현재 노드를 아직 방문하지 않았다면
-    if (graph[x][y] == 0) {
-        // 해당 노드 방문 처리
-        graph[x][y] = 1;
-        // 상, 하, 좌, 우의 위치들도 모두 재귀적으로 호출
-        dfs(x - 1, y);
-        dfs(x, y - 1);
-        dfs(x + 1, y);
-        dfs(x, y + 1);
-        return true;
-    }
-    return false;
+	if (graph[y][x] == 0)
+	{
+		graph[y][x] = 1; // 여기는 체크했다는 뜻으로 1로 바꿔둔다.
+
+		// 상하좌우
+		dfs(y - 1, x);
+		dfs(y, x - 1);
+		dfs(y + 1, x);
+		dfs(y, x + 1);
+
+		// 이거 하는 이유가... 위에 if를 해서 순찰 1로 바꾸려고 하길 위함
+
+		return true; // 이걸 받아야 비로소 +1이 된다.
+	}
+	else
+		return false;
 }
 
-int main() {
-    // N, M을 공백을 기준으로 구분하여 입력 받기
-    cin >> n >> m;
-    // 2차원 리스트의 맵 정보 입력 받기
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            scanf("%1d", &graph[i][j]);
-        }
-    }
-    // 모든 노드(위치)에 대하여 음료수 채우기
-    int result = 0;
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            // 현재 위치에서 DFS 수행
-            if (dfs(i, j)) {
-                result += 1;
-            }
-        }
-    }
-    cout << result << '\n'; // 정답 출력 
+
+int main(void) 
+{
+	int y, x;
+	cin >> y >> x;
+	n = y;
+	m = x;
+
+	// 배열 저장 zone~
+	int input;
+	for (int i = 0;i < y; i++)
+	{
+		for (int j = 0; j < x; j++)
+		{
+			cin >> input;
+			graph[i][j] = input;
+		}
+	}
+
+	int result = 0;
+
+	for (int i = 0; i < y; i++)
+		for (int j = 0; j < x; j++)
+			if (dfs(y, x)) {
+				result += 1;
+			}
+
+
+	cout << result;
+
+
 }
