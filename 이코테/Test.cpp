@@ -2,46 +2,38 @@
 
 using namespace std;
 
-int arr[500] = { 0 };
+int arr[1000003];
 
 int main(void)
 {
-	int num;
-	cin >> num;
-
-	for (int i = 0; i < num; i++)
+	// 1. 인풋
+	int N=0,K=0;
+		
+	cin >> N >> K;
+	
+	for (int i = 0; i < N; i++)
 	{
 		cin >> arr[i];
 	}
-
-	// 1. 선택 정렬
 	
-	for (int i = 0; i < num; i++)
+	// 2. 계산
+	int result = 0;
+
+	for (int i = N-1; i >= 0; i--)
 	{
-		int min_index = i;
-		for (int j = i + 1; j < num; j++)
+		while (1)
 		{
-			if (arr[min_index] < arr[j])
-				min_index = j;
-		}
-		swap(arr[i], arr[min_index]);
-	}
-
-	// 2. 삽입 정렬
-
-	for (int i = 0; i < num; i++)
-	{
-		for (int j = i; j > 0; j--)
-			if (arr[j] < arr[j - 1])
-				swap(arr[j], arr[j - 1]);
-
-			else
+			if (arr[i] > K)
 				break;
+
+			K -= arr[i]; // 하나 빼고
+			result++; // 결과 더하고
+
+		}
+
 	}
-
-	for (int i = 0; i < num; i++)
-		cout << arr[i] << ' ';
-
-
-
+	
+		cout << result;
+		return 0;
+	
 }

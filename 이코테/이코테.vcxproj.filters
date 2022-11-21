@@ -66,5 +66,11 @@
     <ClCompile Include="효율적인 화폐 구성.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="부품 찾기.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="떡볶이 떡 만들기.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
