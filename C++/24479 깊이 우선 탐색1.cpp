@@ -30,6 +30,8 @@ int main(void)
 		vertex[b].push_back(a); // 이걸 추가했다.
 	}
 
+
+
 	// 2. 내림차순 정렬
 	for (int i = 1; i <= N; i++)
 		sort(vertex[i].begin(), vertex[i].end(),greater<int>());
