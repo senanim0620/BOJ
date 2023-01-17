@@ -40,8 +40,6 @@ int main(void)
 
 	}
 
-
-
 	int min = 100000; // 절대값의 최솟값
 	for (int i = 0; i < sum.size(); i++)
 	{
